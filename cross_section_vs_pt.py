@@ -10,8 +10,10 @@ data_z2 = pd.read_csv('HEPData-ins1514251-v2-Table_18.csv')
 data_z3 = pd.read_csv('HEPData-ins1514251-v2-Table_21.csv')
 data_z4 = pd.read_csv('HEPData-ins1514251-v2-Table_24.csv')
 
-#print np.shape(data_z4['Cross_Section_Zll [pb]'])
-#print (np.shape(data_z4['pT(jet) [GeV]']))
+font = {'family': 'serif',
+        'weight': 'normal',
+        'size': 12,}
+        
 
 def graph(x1,x2,x3,x4,y1,y2,y3,y4):
     fig =plt.figure()
@@ -27,7 +29,8 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4):
     ax1.set_yscale('log')
     plt.ylim(10e-8,10e1)
     plt.xlim(20,700)
-    plt.xlabel('p,,T,,^jet^')
+    plt.xlabel(r'$\rm p_{\rm T}^{\rm jet}$'' (leading jet) [GeV]', fontdict = font)
+    plt.ylabel('d'r'${\rm \sigma}$''\d'r'$\rm p_{\rm T}^{\rm jet}$' ' [pb/GeV]', fontdict= font)
     return plt.show()
 
 if __name__ =="__main__": 
