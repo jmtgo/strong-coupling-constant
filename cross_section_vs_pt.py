@@ -13,7 +13,9 @@ data_z4 = pd.read_csv('HEPData-ins1514251-v2-Table_24.csv')
 font = {'family': 'serif',
         'weight': 'normal',
         'size': 12,}
-        
+font1 = {'family': 'serif',
+        'weight': 'normal',
+        'size': 10,}
 
 def graph(x1,x2,x3,x4,y1,y2,y3,y4):
     fig =plt.figure()
@@ -31,6 +33,8 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4):
     plt.xlim(20,700)
     plt.xlabel(r'$\rm p_{\rm T}^{\rm jet}$'' (leading jet) [GeV]', fontdict = font)
     plt.ylabel('d'r'${\rm \sigma}$''\d'r'$\rm p_{\rm T}^{\rm jet}$' ' [pb/GeV]', fontdict= font)
+    plt.text(100,1, 'Z/'r'${\rm \gamma}^{\rm \star}$''+' r'${\rm \geq}$' '1 jet', fontdict=font1)
+    plt.text(100,10e-3, 'Z/'r'${\rm \gamma}^{\rm \star}$''+' r'${\rm \geq}$' '2 jets', fontdict=font1)
     return plt.show()
 
 if __name__ =="__main__": 
