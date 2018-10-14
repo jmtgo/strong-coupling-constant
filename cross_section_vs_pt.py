@@ -33,8 +33,12 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4):
     plt.xlim(20,700)
     plt.xlabel(r'$\rm p_{\rm T}^{\rm jet}$'' (leading jet) [GeV]', fontdict = font)
     plt.ylabel('d'r'${\rm \sigma}$''\d'r'$\rm p_{\rm T}^{\rm jet}$' ' [pb/GeV]', fontdict= font)
-    plt.text(100,1, 'Z/'r'${\rm \gamma}^{\rm \star}$''+' r'${\rm \geq}$' '1 jet', fontdict=font1)
-    plt.text(100,10e-3, 'Z/'r'${\rm \gamma}^{\rm \star}$''+' r'${\rm \geq}$' '2 jets', fontdict=font1)
+    plt.text(100, 10, 'ATLAS 13 TeV, 3.16 fb' r'$^{\rm -1}$', fontdict=font)
+    plt.text(400,10, r'${\rm Z/ \gamma^\star (->l^+l^- ) + \geq 1 jet }$')
+    plt.text(100,1, r'${\rm Z/ \gamma^\star + \geq 1 jet}$', fontdict=font1, rotation=-30)
+    plt.text(100,4e-2, r'${\rm Z/ \gamma^\star + \geq}$' '2 jets,' r'$\rm x10^{\rm -1}$', fontdict=font1, rotation=-25)
+    plt.text(100,10e-4, r'${\rm Z/ \gamma^\star + \geq}$' '3 jets, ' r'$\rm x10^{\rm -2}$', fontdict=font1, rotation=-20)
+    plt.text(100,4e-5, r'${\rm Z/ \gamma^\star + \geq}$' '4 jets, ' r'$\rm x10^{\rm -3}$', fontdict=font1, rotation=-20)
     return plt.show()
 
 if __name__ =="__main__": 
