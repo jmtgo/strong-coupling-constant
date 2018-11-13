@@ -15,6 +15,7 @@ data_z4 = pd.read_csv('HEPData-ins1514251-v2-Table_24.csv')
 theory_z2 = shelve.open('2jet')
 theory_z3 = shelve.open('threejet')
 theory_z4 = shelve.open('fourjet')
+Cov = shelve.open('Cov_all')
 
 font = {'family': 'serif', #setting the font size
         'weight': 'normal',
@@ -24,25 +25,27 @@ font1 = {'family': 'serif',
         'size': 10,}
 
 
-def CHI_SQ(st, l, sy, y, yth):
-    C = np.diag(quad(st,l,sy)**2)
+def CHI_SQ(label, y, yth):
+    C = np.array(Cov[label])
+    #C = np.diag(quad(st,l,sy)**2)
     X = np.zeros(16, dtype = np.float64)   
     for i in np.arange(112, 128): 
         X[i-112] = np.inner((y - np.array(yth['0'+str(i)+''])[1:len(y)+1] ), (np.inner(np.linalg.inv(C),(y - np.array(yth['0'+str(i)+''])[1:len(y)+1] ).T)))
     return X
 
-def CHI_graph(ax, st2, l2, sy2, y2, yth2, st3, l3, sy3, y3, yth3, st4, l4, sy4, y4, yth4):
+def CHI_graph(ax, y2, yth2, y3, yth3, y4, yth4):
     fig1 =plt.figure(1)
    
-    plt.scatter(ax,CHI_SQ(st2, l2, sy2, y2, yth2), marker = 'o', color = 'k')
-    plt.scatter(ax,CHI_SQ(st3, l3, sy3, y3, yth3), marker = 'o', color = 'k')
-    plt.scatter(ax,(CHI_SQ(st4, l4, sy4, y4, yth4))-350, marker = 'o', color = 'k')
-    plt.plot(ax,CHI_SQ(st2, l2, sy2, y2, yth2), label = r'${\rm 2 \ jets}$' , color = 'b')
-    plt.plot(ax,CHI_SQ(st3, l3, sy3, y3, yth3), label = r'${\rm 3 \ jets}$', color='r')
-    plt.plot(ax,CHI_SQ(st4, l4, sy4, y4, yth4)-350, label = r'${\rm 4 \ jets,\ \chi ^2 \ -350}$', color='g')
+    plt.scatter(ax,CHI_SQ('twoj', y2, yth2), marker = 'o', color = 'k')
+    plt.scatter(ax,CHI_SQ('threej', y3, yth3), marker = 'o', color = 'k')
+    plt.scatter(ax,(CHI_SQ('fourj', y4, yth4)), marker = 'o', color = 'k')
+    plt.plot(ax,CHI_SQ('twoj', y2, yth2), label = r'${\rm 2 \ jets}$' , color = 'b')
+    plt.plot(ax,CHI_SQ('threej', y3, yth3), label = r'${\rm 3 \ jets}$', color='r')
+    plt.plot(ax,CHI_SQ('fourj', y4, yth4), label = r'${\rm 4 \ jets}$', color='g')
     plt.xlabel(r'${\rm \alpha _s}$')
     plt.ylabel(r'${\chi ^2(\alpha_s)}$')
     plt.legend(loc = 'upper left')
+  
     plt.show()
 
 def make_error_boxes(ax, xdata, ydata, xerror, yerror, facecolor='k', edgecolor='None', alpha=0.25):
@@ -103,7 +106,6 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, 
     ax2.plot(np.array([20.0,700]), np.array([1.0,1.0]), '-k')
     ax2.scatter(x1, np.ones(len(x1)), marker ='None')
     _ = make_error_boxes(ax2, x1, np.ones(len(x1)), xerror(np.array(data_z1['xerr'])), yerror(y1, quad(st1, l1, sy1))) #calling error box function to draw shaded boxes
-    
 
 
     ax3 = fig1.add_axes((.1,.26,.8,.09))
@@ -120,7 +122,6 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, 
     ax3.get_xaxis().set_ticklabels([])
     ax3.xaxis.set_minor_locator(plt.MaxNLocator(34))
     ax3.plot(np.array([20.0,500]), np.array([1.0,1.0]), '-k')
-    ax3.scatter(x2, np.ones(len(x2)), marker ='None')
     ax3.scatter(x2, (np.array(theory_z2['0118'])[1:len(np.array(theory_z2['0118']))-1]/y2), marker = 'x' )
     _ = make_error_boxes(ax3, x2, np.ones(len(x2)), xerror(np.array(data_z2['xerr'])), yerror(y2, quad(st2, l2, sy2)))
 
@@ -137,7 +138,6 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, 
     ax4.get_xaxis().set_ticklabels([])
     ax4.xaxis.set_minor_locator(plt.MaxNLocator(34))
     ax4.plot(np.array([20.0,500]), np.array([1.0,1.0]), '-k')
-    ax4.scatter(x3, np.ones(len(x3)), marker ='None')
     ax4.scatter(x3, (np.array(theory_z3['0118'])[1:len(np.array(theory_z3['0118']))-1]/y3), marker = 'x' )
     _ = make_error_boxes(ax4, x3, np.ones(len(x3)), xerror(np.array(data_z3['xerr'])), yerror(y3, quad(st3, l3, sy3)))
 
@@ -155,7 +155,6 @@ def graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, 
     plt.xlim(20,700)
     ax5.xaxis.set_minor_locator(plt.MaxNLocator(34))
     ax5.plot(np.array([20.0,500]), np.array([1.0,1.0]), '-k')
-    ax5.scatter(x4, np.ones(len(x4)), marker ='None')
     ax5.scatter(x4, (np.array(theory_z4['0118'])[1:len(np.array(theory_z4['0118']))-2]/y4), marker = 'x' )
     _ = make_error_boxes(ax5, x4, np.ones(len(x4)), xerror(np.array(data_z4['xerr'])), yerror(y4, quad(st4, l4, sy4)))
     plt.xlabel(r'$\rm p_{\rm T}^{\rm jet} \,(leading\, jet) \,[GeV]}$', fontdict = font)
@@ -178,6 +177,8 @@ def quad(st, l, sy): #calulating total errors in y
     return np.sqrt(st**2 +l**2 +sy**2)
 
 if __name__ =="__main__": 
+
+
     x1 = np.array(data_z1['pT(jet) [GeV]'])
     x2 = np.array(data_z2['pT(jet) [GeV]'])
     x3 = np.array(data_z3['pT(jet) [GeV]'])
@@ -200,9 +201,12 @@ if __name__ =="__main__":
     l4 = np.array(data_z4['lumi +'])
     ax = np.arange(0.112,0.128, 0.001)
 
-    graph = graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, sy3, sy4)
-    CHI_graph(ax, st2, l2, sy2, y2, theory_z2, st3, l3, sy3, y3, theory_z3, st4, l4, sy4, y4, theory_z4)
-  
+    #graph = graph(x1,x2,x3,x4,y1,y2,y3,y4, st1, st2,st3, st4, l1, l2, l3, l4, sy1, sy2, sy3, sy4)
+    CHI_graph(ax, y2, theory_z2, y3, theory_z3, y4, theory_z4)
+   
+
+
+Cov.close()
 theory_z2.close()
 theory_z3.close()
 theory_z4.close()
