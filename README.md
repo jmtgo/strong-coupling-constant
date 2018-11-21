@@ -8,6 +8,16 @@ Cstat is calculated from the errors generated in the HEP data set.
 
 Cpdf will be calculated using data from pdf sets listed below:
 
+These pdfs will use Hessian.py:
+- CT10nlo, CT10nlo_as_0i
+- CT14nlo, CT14nlo_as_0i
+- MSTW2008nlo68cl, MSTW2008nlo68cl_asmzrange
+- MMHT2014nlo68cl, MMHT2014nlo68cl_asmzrange
+
+These pdfs will use a statistical approach:
+- NNPDF23_nlo_as_0i
+- NNPDF30_nlo_as_0i
+
 twojet, threjet and fourjet are shelves with different keys with the following structure:
 [0112] = CT10 pdf set with as = 0112
 [CT10nloij] = CT10 pdf set 2nd approximation for the pdf up to 68% confidence level 'ij' number.
