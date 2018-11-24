@@ -13,15 +13,23 @@ These pdfs will use Hessian.py:
 - CT14nlo, CT14nlo_as_0i
 - MSTW2008nlo68cl, MSTW2008nlo68cl_asmzrange
 - MMHT2014nlo68cl, MMHT2014nlo68cl_asmzrange
+- Note the confidence level pdf sets come in pair, where the 0th set is the best estimate and i, i+1 are in pairs.
 
 These pdfs will use a statistical approach:
 - NNPDF23_nlo_as_0i
 - NNPDF30_nlo_as_0i
 
 twojet, threjet and fourjet are shelves with different keys with the following structure:
-[0112] = CT10 pdf set with as = 0112
-[CT10nloij] = CT10 pdf set 2nd approximation for the pdf up to 68% confidence level 'ij' number.
-[CT14nlo_as_0ijk] =CT14 pdf set with as = ijk
-[CT14nloij] = ct14 PDF SET, 2nd approximation for the pdf up to 68% confidence level 'ij' number.
+-[0112] = CT10 pdf set with as = 0112
+-[CT10nloij] = CT10 pdf set 2nd approximation for the pdf up to 68% confidence level 'ij' number.
+-[CT14nlo_as_0ijk] =CT14 pdf set with as = ijk
+-[CT14nloij] = ct14 PDF SET, 2nd approximation for the pdf up to 68% confidence level 'ij' number.
+-[MMHT14_000ij] = MMHT PDF SET with as = ij
+-[MMHT1468cli] = MMHT PDF SET, 2nd approximation for the pdf up to 68% confidence level 'ij' number.
+-[MSTW08_000ij] = MSTW PDF SET with as = ij
+-[MSTW0868cli] = MSTW PDF SET, 2nd approximation for th pdf up to 68% confidence level 'ij' number.
 
+
+for the neural network pdf's:
+-[NNPDFij_0k_l] = ij = nn type, k = value of as, l = index of the pdf set.
 
