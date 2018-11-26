@@ -15,7 +15,7 @@ These pdfs will use Hessian.py:
 - MMHT2014nlo68cl, MMHT2014nlo68cl_asmzrange
 - Note the confidence level pdf sets come in pair, where the 0th set is the best estimate and i, i+1 are in pairs.
 
-These pdfs will use a statistical approach:
+These pdfs will use NNPDF.py:
 - NNPDF23_nlo_as_0i
 - NNPDF30_nlo_as_0i
 
