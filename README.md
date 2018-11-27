@@ -19,7 +19,7 @@ These pdfs will use NNPDF.py:
 - NNPDF23_nlo_as_0i
 - NNPDF30_nlo_as_0i
 
-twojet, threjet and fourjet are shelves with different keys with the following structure:
+twojet, threjet and fourjet are shelves with different keys with the following structure, they are stored in the repisitary linux-shelves:
 - [0112] = CT10 pdf set with as = 0112
 - [CT10nloij] = CT10 pdf set 2nd approximation for the pdf up to 68% confidence level 'ij' number.
 - [CT14nlo_as_0ijk] =CT14 pdf set with as = ijk
