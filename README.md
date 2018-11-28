@@ -23,7 +23,12 @@ The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), the
 
 The Cpdf's were converted into percentage error matrices and stored in ErPdf:
 - [CT10nloi] = jet i principle value of as.
-- [CT14nloi[ = jet i principle value of as.
+- [CT14nloi] = jet i principle value of as.
+- [MMHT14i] = jet i principle value of as.
+- [MSTW08i] = jet i principle value of as.
+
+These were then used to 'reverse' calculate for the non principle as values and were stored in
+
 
 
 
