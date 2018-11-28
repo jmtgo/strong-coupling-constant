@@ -13,7 +13,7 @@ twojet, threjet and fourjet are shelves with different keys, they are stored in 
 for the neural network pdf's:
 - [NNPDFij_0k_l] = ij = nn type, k = value of as, l = index of the pdf set.
 
-The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), the keys of which are:
+The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), and were stored in Cpdfi, where i is the jet number: The keys of which are:
 - [MMHT14cl] = MMHT14 for the principle value of as.
 - [MSTW08cl] = MSTW08 for the principle value of as.
 - [CT10nlo] = CT10nlo for the principle value of as.
@@ -27,7 +27,11 @@ The Cpdf's were converted into percentage error matrices and stored in ErPdf:
 - [MMHT14i] = jet i principle value of as.
 - [MSTW08i] = jet i principle value of as.
 
-These were then used to 'reverse' calculate for the non principle as values and were stored in
+These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
+- [MMHT14cl0ii] = MMHT for the ii value of as.
+- [MSTW08cl0ii] = MSTW for the ii value of as. 
+- [CT10nlo0ii] = CT10 for the ii value of as.
+- [CT14nlo0ii] = CT14 for the ii value of as. 
 
 
 
