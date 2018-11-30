@@ -28,8 +28,8 @@ The Cpdf's were converted into percentage error matrices and stored in ErPdf:
 - [MSTW08i] = jet i principle value of as.
 
 These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
-- [MMHT14clo0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE
-- [MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,21), 0TH IS PRINCIPLE
+- [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE
+- [MSTW08clo0ii] = MSTW for the ii value of as. (0.107-0.128) (1,21), 0TH IS PRINCIPLE
 - [CT10nlo0ii] = CT10 for the ii value of as. (0.112-0.128) (112,127)
 - [CT14nlo0ii] = CT14 for the ii value of as. (0.111-0.124) (111,124)
 
