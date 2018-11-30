@@ -15,7 +15,7 @@ for the neural network pdf's:
 
 The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), and were stored in Cpdfi, where i is the jet number: The keys of which are:
 - [MMHT14cl] = MMHT14 for the principle value of as.
-- [MSTW08cl] = MSTW08 for the principle value of as.
+- [MSTW08cl] = MSTW08 for the principle value of as. 
 - [CT10nlo] = CT10nlo for the principle value of as.
 - [CT14nlo] = CT14nlo for the principle value of as.
 - [NN23_0ii] = NNPDF23 for the value of as = 0ii. (114-124)
@@ -28,10 +28,10 @@ The Cpdf's were converted into percentage error matrices and stored in ErPdf:
 - [MSTW08i] = jet i principle value of as.
 
 These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
-- [MMHT14cl0ii] = MMHT for the ii value of as.
-- [MSTW08cl0ii] = MSTW for the ii value of as. 
-- [CT10nlo0ii] = CT10 for the ii value of as.
-- [CT14nlo0ii] = CT14 for the ii value of as. 
+- [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE
+- [MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,21), 0TH IS PRINCIPLE
+- [CT10nlo0ii] = CT10 for the ii value of as. (0.112-0.128) (112,127)
+- [CT14nlo0ii] = CT14 for the ii value of as. (0.111-0.124) (111,124)
 
 The average values for some as values were calculated for NNPDF, and stored in yNN:
 -[NN30_0iii_jk] = for NNPDF30 as = iii (118 so far), k = jet number.
