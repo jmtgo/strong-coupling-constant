@@ -52,7 +52,8 @@ These were then used to 'reverse' calculate for the non principle as values and 
 - [CT14nlo0ii] = CT14 for the ii value of as. (0.111-0.123) (111,123)
 
 The average values for some as values were calculated for NNPDF, and stored in yNN:
--[NN30_0iii_jk] = for NNPDF30 as = iii (118 so far), k = jet number.
+- [NN30_0iii_jk] = for NNPDF30 as = iii (all as not jet 4), k = jet number.
+- [NNPDF23_0iii_jk] = for NNPDF23 as=iii, k = jet number. (not done jet 4, done all as so far)
 
 
 
