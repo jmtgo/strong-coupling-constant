@@ -8,6 +8,8 @@ Cstat is calculated from the errors generated in the HEP data set.
 
 Cpdf will be calculated using data from pdf sets listed in linux-shelves read me.
 
+For different factorisation and renormalisation values there is an individual shelve, with format twojet_(0.5,0.5), for all combinations of 0.5,1,2 except (1,1) which is just twojet as this is the best approximation. The keys within each shelve is the same. There are eight scales in total (Except the (1,1) scale). 
+
 twojet, threjet and fourjet are shelves with different keys with the following structure, they are stored in the repositary linux-shelves:
 - [0112] = CT10 pdf set with as = 0112
 - [CT10nloij] = CT10 pdf set 2nd approximation for the pdf up to 68% confidence level 'ij' number.
@@ -33,11 +35,14 @@ The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), and
 - [NN23_0ii] = NNPDF23 for the value of as = 0ii. (114-124)
 - [NN30_0ii] = NNPDF30 for the value of as = 0ii. (115,117,118,119,121).
 
-The Cpdf's were converted into percentage error matrices and stored in ErPdf:
+The Cpdf's were converted into percentage error matrices and stored in ErPdf, for scale (1,1):
 - [CT10nloi] = jet i principle value of as.
 - [CT14nloi] = jet i principle value of as.
 - [MMHT14i] = jet i principle value of as.
 - [MSTW08i] = jet i principle value of as.
+
+For scales of all combinations besides (1,1):
+-[MSTW082_(0.5,0.5)] = jet i principle value of as scale (0.5,0.5)
 
 These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
 - [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE
