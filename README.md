@@ -41,7 +41,8 @@ The Cpdf's were converted into percentage error matrices and stored in ErPdf, fo
 - [MMHT14i] = jet i principle value of as.
 - [MSTW08i] = jet i principle value of as.
 
-For scales of all combinations besides (1,1):
+For scales of all combinations besides (1,1): 
+
 -[MSTW082_(0.5,0.5)] = jet i principle value of as scale (0.5,0.5)
 
 These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
