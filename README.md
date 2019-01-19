@@ -8,7 +8,7 @@ Cstat is calculated from the errors generated in the HEP data set.
 
 Cpdf will be calculated using data from pdf sets listed in linux-shelves read me.
 
-For different factorisation and renormalisation values there is an individual shelve, with format twojet_(0.5,0.5), for all combinations of 0.5, 1, 2, except (1,1) which is just twojet as this is the best approximation. The keys within each shelve is the same. There are eight scales in total (Except the (1,1) scale). 
+For different factorisation and renormalisation values there is an individual shelve, with format twojet_(0.5,0.5), for all combinations of 0.5, 1, 2, except (1,1) which is just twojet as this is the best approximation. The keys within each shelve is the same. There are eight scales in total (Except the (1,1) scale). These shelves contain the cross section generated from fastnlo for different Pdf's.
 
 twojet, threjet and fourjet are shelves with different keys with the following structure, they are stored in the repositary linux-shelves:
 - [0112] = CT10 pdf set with as = 0112
