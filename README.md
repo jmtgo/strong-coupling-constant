@@ -53,9 +53,19 @@ These were then used to 'reverse' calculate for the non principle as values and 
 - [CT10nlo0ii] = CT10 for the ii value of as. (0.112-0.127) (112,127)
 - [CT14nlo0ii] = CT14 for the ii value of as. (0.111-0.123) (111,123)
 
-The average values for some as values were calculated for NNPDF, and stored in yNN (for (1,1)):
+The average values for all as values were calculated for NNPDF, and stored in yNN (for (1,1)), and yNN_(i,i) for the other scales:
 - [NN30_0iii_jk] = for NNPDF30 as = iii (all as not jet 4), k = jet number.
 - [NNPDF23_0iii_jk] = for NNPDF23 as=iii, k = jet number. (not done jet 4, done all as so far)
+
+The bin values for the predicated cross section were needed to be changed to included the non-perturbative corrections between hadron and parton level. The cross sections were stored in shelves of name type "pci_(j,k)" where pc: perturbative correction, i is the number of jets and j,k is the factoristion, renormalisation scales respectively. The pdf's within each shelf of each jet had the following dictionaries:
+
+-[CT10nlo0iii] = CT10 for the ii value of as. (0.112-0.127)
+-[CT14nlo0iii] = CT14 for the ii value of as. (0.111-0.123)
+-[MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
+-[MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
+-[NNPDF23_0iii] = NNPDF for the ii value of as. (114-123) similar for 30.
+
+
 
 
 
