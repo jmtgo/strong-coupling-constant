@@ -24,8 +24,6 @@ twojet, threjet and fourjet are shelves with different keys with the following s
 for the neural network pdf's:
 - [NNPDFij_0k_l] = ij = nn type, k = value of as, l = index of the pdf set.
 
-for the neural network pdf's:
-- [NNPDFij_0k_l] = ij = nn type, k = value of as, l = index of the pdf set.
 
 The Cpdf's were calculated using Hessian and NNPDF (for the NNPDF pdf sets), and were stored in Cpdfi, where i is the jet number. The keys of which are for (1,1):
 - [MMHT14cl] = MMHT14 for the principle value of as.
@@ -45,10 +43,10 @@ The Cpdf's were converted into percentage error matrices and stored in ErPdf, fo
 
 For scales of all combinations besides (1,1), the ErPdf: 
 
-- [MSTW08i_(0.5,0.5)] = jet i principle value of as scale (0.5,0.5)
+- [MSTW08i_(0.5,0.5)] = jet i principle value of as scale (0.5,0.5) etc. 
 
 These were then used to 'reverse' calculate for the non principle as values and were stored in Cpdfi also, with keys:
-- [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE
+- [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,20) 0TH IS PRINCIPLE [MMHT14clo0ii] for all other scales.
 - [MSTW08clo0ii] = MSTW for the ii value of as. (0.107-0.128) (1,21), 0TH IS PRINCIPLE
 - [CT10nlo0ii] = CT10 for the ii value of as. (0.112-0.127) (112,127)
 - [CT14nlo0ii] = CT14 for the ii value of as. (0.111-0.123) (111,123)
@@ -59,11 +57,11 @@ The average values for all as values were calculated for NNPDF, and stored in yN
 
 The bin values for the predicated cross section were needed to be changed to included the non-perturbative corrections between hadron and parton level. The cross sections were stored in shelves of name type "pci_(j,k)" where pc: perturbative correction, i is the number of jets and j,k is the factoristion, renormalisation scales respectively. The pdf's within each shelf of each jet had the following dictionaries:
 
--[CT10nlo0iii] = CT10 for the ii value of as. (0.112-0.127)
--[CT14nlo0iii] = CT14 for the ii value of as. (0.111-0.123)
--[MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
--[MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
--[NNPDF23_0iii] = NNPDF for the ii value of as. (114-123) similar for 30.
+- [CT10nlo0iii] = CT10 for the ii value of as. (0.112-0.127)
+- [CT14nlo0iii] = CT14 for the ii value of as. (0.111-0.123)
+- [MMHT14cl0ii] = MMHT for the ii value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
+- [MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
+- [NNPDF23_0iii] = NNPDF for the ii value of as. (114-123) similar for 30.
 
 
 
