@@ -63,6 +63,13 @@ The bin values for the predicated cross section were needed to be changed to inc
 - [MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
 - [NNPDF23_0iii] = NNPDF for the ii value of as. (114-123) similar for 30.
 
+The errors for each pdf were stored in a shelve of name PDF_er(a,b) where a,b is the scale (including 1). They have the format (2jet,3jet)^T. They had the following keys:
+
+- [CT10nlo0i] = CT10 for the i value of as. [0.112-0.127]
+- [CT14nlo0i] = CT14 for the i value of as. [0.111-0.123]
+- [MMHT14clo0i] = MMHT for the i value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
+- [MSTW08clo0i] = MSTW for i value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
+- [NNPDF23_0i] = NNPDF for the i value of as. (114-123) for 30 it is (115-121,2 and 118).
 
 
 
