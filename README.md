@@ -63,6 +63,21 @@ The bin values for the predicated cross section were needed to be changed to inc
 - [MSTW08cl0ii] = MSTW for the ii value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
 - [NNPDF23_0iii] = NNPDF for the ii value of as. (114-123) similar for 30.
 
+
+The errors for each PDF were stored in a shelve of same PDF_eri(a,b) where i is the jet number. They have the following keys:
+- [CT10nlo] = CT10 for the principle value of as.
+- [CT14nlo] = CT14 for the principle value of as.
+- [MMHT14cl] = for the principle value of as. 
+- [MSTW08cl] = for the principle value of as. 
+
+For the neural network PDF's:
+- [NNPDF30_0iii] for the ith value of as.
+
+For the non principle values of as:
+- [CT10nlo0i] for the i value of as.
+- [CT14nlo0i] for the i value of as. 
+- [MMHT14cl0i] for the i value of as.
+- [MSTW08cl0i] for the i value of as. 
 The errors for each pdf were stored in a shelve of name PDF_er(a,b) where a,b is the scale (including 1). They have the format (2jet,3jet)^T. They had the following keys:
 
 - [CT10nlo0i] = CT10 for the i value of as. [0.112-0.127]
