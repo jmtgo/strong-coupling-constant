@@ -94,4 +94,10 @@ The full size predictions with 2jet, 3jet format were stored in ypred_(a,b) for 
 - [MMHT14cl0i]
 - [NNPDF23i]
 
+The full size covariance matrices for 2jet, 3 jet were stored in Cpdf_large(a,b) for scales a,b with keys:
+- [CT10nlo0i]
+- [CT14nlo0i]
+- [MSTW08cl0i]
+- [MMHT14cl0i]
+- [NNPDF23_0i]
 
