@@ -87,6 +87,11 @@ The errors for each pdf were stored in a shelve of name PDF_er(a,b) where a,b is
 - [NNPDF23_0i] = NNPDF for the i value of as. (114-123) for 30 it is (115-121,2 and 118).
 
 
-
+The full size predictions with 2jet, 3jet format were stored in ypred_(a,b) for scales a,b, with keys:
+- [CT10nlo0i]
+- [CT14nlo0i]
+- [MSTW08cl0i]
+- [MMHT14cl0i]
+- [NNPDF23_0i]
 
 
