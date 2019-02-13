@@ -92,6 +92,6 @@ The full size predictions with 2jet, 3jet format were stored in ypred_(a,b) for 
 - [CT14nlo0i]
 - [MSTW08cl0i]
 - [MMHT14cl0i]
-- [NNPDF23_0i]
+- [NNPDF23i]
 
 
