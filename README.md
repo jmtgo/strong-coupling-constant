@@ -55,7 +55,7 @@ The average values for all as values were calculated for NNPDF, and stored in yN
 - [NN30_0iii_jk] = for NNPDF30 as = iii (all as not jet 4), k = jet number.
 - [NNPDF23_0iii_jk] = for NNPDF23 as=iii, k = jet number. (not done jet 4, done all as so far)
 
-The bin values for the predicated cross section were needed to be changed to included the non-perturbative corrections between hadron and parton level. The cross sections were stored in shelves of name type "pci_(j,k)" where pc: perturbative correction, i is the number of jets and j,k is the factoristion, renormalisation scales respectively. The pdf's within each shelf of each jet had the following dictionaries:
+The bin values for the predicated cross section were needed to be changed to included the non-perturbative corrections between hadron and parton level. The cross sections were stored in shelves of name type "pci__(j,k)" where pc: perturbative correction, i is the number of jets and j,k is the factoristion, renormalisation scales respectively. The pdf's within each shelf of each jet had the following dictionaries:
 
 - [CT10nlo0iii] = CT10 for the ii value of as. (0.112-0.127)
 - [CT14nlo0iii] = CT14 for the ii value of as. (0.111-0.123)
@@ -78,12 +78,14 @@ For the non principle values of as:
 - [CT14nlo0i] for the i value of as. 
 - [MMHT14cl0i] for the i value of as.
 - [MSTW08cl0i] for the i value of as. 
+
+
 The errors for each pdf were stored in a shelve of name PDF_er(a,b) where a,b is the scale (including 1). They have the format (2jet,3jet)^T. They had the following keys:
 
 - [CT10nlo0i] = CT10 for the i value of as. [0.112-0.127]
 - [CT14nlo0i] = CT14 for the i value of as. [0.111-0.123]
-- [MMHT14clo0i] = MMHT for the i value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
-- [MSTW08clo0i] = MSTW for i value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
+- [MMHT14cl0i] = MMHT for the i value of as. (0.108-0.128) (1,21) values for loop, 0th is principle.
+- [MSTW08cl00i] = MSTW for i value of as. (0.107-0.128) (1,22) values for loop, 0th is principle.
 - [NNPDF23_0i] = NNPDF for the i value of as. (114-123) for 30 it is (115-121,2 and 118).
 
 
@@ -92,7 +94,7 @@ The full size predictions with 2jet, 3jet format were stored in ypred_(a,b) for 
 - [CT14nlo0i]
 - [MSTW08cl0i]
 - [MMHT14cl0i]
-- [NNPDF23i]
+- [NNPDF23_0i]
 
 The full size covariance matrices for 2jet, 3 jet were stored in Cpdf_large(a,b) for scales a,b with keys:
 - [CT10nlo0i]
@@ -101,3 +103,9 @@ The full size covariance matrices for 2jet, 3 jet were stored in Cpdf_large(a,b)
 - [MMHT14cl0i]
 - [NNPDF23_0i]
 
+The Chi squared tests were stored in CHI_Squared(a,b) with keys:
+- [CT10nlo0]
+- [CT14nlo0]
+- [MMHT14cl0]
+- [MSTW08cl0]
+- [NNPDF30_0]
