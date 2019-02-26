@@ -109,3 +109,6 @@ The Chi squared tests were stored in CHI_Squared(a,b) with keys:
 - [MMHT14cl0]
 - [MSTW08cl0]
 - [NNPDF30_0]
+
+The minimum value of alpha_s and the one sigma variation were stored in Alpha_S with the PDF's as keys.
+where a_S is in [0], the upper error [1] and the lower error is in [2], obtained from Chi(Alpha/pm) = Chi(Alpha_0) + 1
