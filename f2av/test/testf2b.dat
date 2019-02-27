@@ -1,0 +1,21 @@
+*
+* Sample F2 table input.
+*
+* Lines starting with star are ignored
+*
+*         Q2 X F2 F2stat F2Syst(src)
+*
+&FHEAD
+  NF2FILE = 5
+  NSFILE  = 3
+  systype = 2,5,3
+  REACTION = 1
+  percent = 20*T
+  CMEEXP  = 50600
+&END
+*
+10.  0.1    1.50  1. 2. 2.5 5.
+20.  0.002  1.60  1. 2. 1.5 5.
+30.  0.002  1.680  1. 2. 0.5 5.
+40.  0.002  1.750  1. 2. -.5 5.
+50.  0.001  1.800  1. 2. 3.5 5.

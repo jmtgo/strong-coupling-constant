@@ -1,0 +1,6 @@
+\frametitle{Calculating ${C_{PDF}}$ for general ${\alpha _s}$}
+
+	\begin{equation} \label{PERREV} C_{\%} = \dfrac{C_{PDF}^{i,j}(\alpha_0) \times 100}{ \sigma_{0}^{i} \times  \sigma_{0}^{j}}, \end{equation}
+
+	%then use C% to find cpdf for the other as values, we use this equation in reverse but now these cross sections are the cross sections generated from the PDF's at these other non central alpha_S values.
+

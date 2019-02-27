@@ -1,0 +1,20 @@
+\tocdepth@munge 
+\contentsline {section}{\numberline {}Contents}{1}{section*.1}
+\tocdepth@restore 
+\contentsline {section}{\numberline {1}Introduction}{2}{section*.2}
+\contentsline {section}{\numberline {2}The Expansion of ${\mathbf {\alpha _s}}$}{2}{section*.3}
+\contentsline {subsection}{\numberline {A}Previous Extraction Methods}{3}{section*.4}
+\contentsline {section}{\numberline {3}Theoretical Context and Motivation}{4}{section*.5}
+\contentsline {subsection}{\numberline {A}The Context of QCD within the Standard Model.}{4}{section*.6}
+\contentsline {subsection}{\numberline {B}Asymptotic Freedom and Colour Confinement}{5}{section*.7}
+\contentsline {section}{\numberline {4}Experimental Set-up at the LHC}{6}{section*.8}
+\contentsline {subsection}{\numberline {A}Jet Algorithms}{7}{section*.9}
+\contentsline {section}{\numberline {5}Statistical Analysis and Extraction Procedure.}{7}{section*.10}
+\contentsline {subsection}{\numberline {A}Calculating ${\mathbf {C_{exp}}}$}{8}{section*.11}
+\contentsline {subsection}{\numberline {B}Calculating ${\mathbf {C_{Theory}}}$ and Theoretical Predictions}{8}{section*.12}
+\contentsline {subsection}{\numberline {C}Calculating ${\mathbf {C_{PDF}}}$ and the Structure of PDF's}{9}{section*.13}
+\contentsline {subsection}{\numberline {D}Additional Corrections to the PDF Predictions.}{10}{section*.14}
+\contentsline {section}{\numberline {6}Factorisation and Renormalisation}{10}{section*.15}
+\contentsline {section}{\numberline {7}Results}{12}{section*.16}
+\contentsline {section}{\numberline {}Acknowledgments}{13}{section*.17}
+\contentsline {section}{\numberline {}References}{13}{section*.18}

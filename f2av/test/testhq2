@@ -1,0 +1,29 @@
+*
+* Sample steering file for f2ave program 
+*
+&INPUT
+  
+  NSTATADJ = -2
+  LSQRTSTAT = T
+
+  LAveSameExp = T
+
+  NF2FILES = 2
+  NEXP     = 2
+  F2FILES  = 'test/xsech1.dat','test/xseczeus.dat'
+  EXPNAME  = 'h1' , 'zeus'
+  COMEXP   = 90200.
+  Q2XGRID   = 'test/q2xallhera.dat'
+  IDEBUG = 0
+  IOUT   = 212
+  NREACT   = 1
+  RLIST    = 615
+
+&END
+
+&SYST
+  NSYSTOT = 14
+  NSYST    =  6,8
+  SYSNAM  = 'Eel','Thel','HCal','Noise','bg','S'
+            'd1','d2','d3','d4','d5','d6','d7','d8'
+&END

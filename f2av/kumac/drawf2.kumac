@@ -1,0 +1,790 @@
+ Macro help
+   mess xsncpp
+   mess xsncep
+   mess xsccpp
+   mess xsccep
+   mess xsq,xexample 
+   mess xspph1      --- svx   and 94 data
+   mess xspph1      all h1
+   mess xspph1bpt
+   mess xspph1zall
+   mess xspph100    --- svx00
+   mess xspph1svx   2 svx  
+   mess xx          --- x-dependence for proceedings  
+ return
+ 
+ macro journal size=1
+*
+* Macro to set standard sizes and fonts for PRD 
+*   size=1 == square, one zone, reasonable border
+*   size=2 == xsiz=20, ysiz 14, one zone, no border
+*   size=3 == xsiz=20, ysiz 13, zone 2 1
+*   size=4 == xsiz=20, ysiz 12, zone
+*   size=5 == xsiz=20, ysiz 12, zone, reasonable border
+*   size=6 == square, four zones
+*   size=7 == square, one zone, no border
+*   size=8 == xsiz=20, ysiz=26 (for zone 1 2), reasonable border
+*   size=9 == square, sizing for weird eopreslin plot
+*
+  set * ; opt * ; title '' ; zone 
+  h/del * ; v/del *
+  close 0
+
+  set hcol 1
+  type = -40
+
+  *-- set all fonts to Helvetica normal
+  set vfon [type]
+  set lfon [type]
+  set cfon [type]
+  set tfon [type]
+  set gfon [type]
+  set txfp [type]
+
+  opt nfit
+  opt nbox
+*  opt box
+  opt nsta
+  opt ndat
+  opt ngri
+  opt nfil
+
+  set lwid 3
+  set hwid 3
+
+  set txal 32
+
+  *-- define vectors for sizes, etc.
+  *v/cre csizv(9) R 0.3 0.3 0.3 0.3 0.3 0.4  0.3 0.3 
+  *v/cre tsizv(9) R 0.4 0.4 0.4 0.4 0.4 0.4  0.4 0.4 
+  *v/cre vsizv(9) R 0.4 0.4 0.4 0.4 0.4 0.4  0.4 0.4 
+  *v/cre asizv(9) R 0.4 0.4 0.4 0.4 0.4 0.4  0.4 0.4 
+  *v/cre chhev(9) R 0.4 0.4 0.4 0.4 0.3 0.4  0.4 0.3 
+
+  v/cre csizv(9) R 9*0.5
+  v/cre tsizv(9) R 9*0.5
+  v/cre vsizv(9) R 9*0.45
+  v/cre asizv(9) R 9*0.5
+  v/cre chhev(9) R 9*0.6
+						       
+  v/cre yhtiv(9) R 1.2 1.2 1.5 1.2 1.0 1.3 1.2 1.3 1.3 
+  v/cre ygtiv(9) R 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 1.2 
+  v/cre gsizv(9) R 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 
+						       
+  v/cre xwinv(9) R 2.0 2.0 2.2 2.0 2.0 2.2 2.0 2.5 2.2 
+  v/cre ywinv(9) R 2.0 2.0 2.0 2.0 2.0 2.0 2.0 2.2 2.2 
+						       
+  v/cre xwidv(9) R 9*3.0
+  v/cre ywidv(9) R 9*3.0
+  v/cre bwidv(9) R 9*3.0
+  v/cre fwidv(9) R 9*3.0
+  v/cre yticv(9) R 9*0.3
+  v/cre xticv(9) R 9*0.3
+  v/cre errxv(9) R 9*0.2
+			                       	    
+  v/cre xsizv(9) R 9*20.
+  v/cre ysizv(9) R 20. 14. 13. 10. 12. 20. 20. 26. 20. 
+			                       	        
+  v/cre xmglv(9) R 2.0 .01 2.2 .01 2.0 2.0 .01 2.5 2.5 
+  v/cre xmgrv(9) R 1.0 .01 0.5 .01 0.5 1.0 .01 1.0 1.0 
+  v/cre ymglv(9) R 2.0 .01 2.2 .01 1.5 2.0 .01 2.0 2.0 
+  v/cre ymguv(9) R 1.0 .01 0.5 .01 0.5 1.0 .01 0.5 1.0 
+			                       	        
+  v/cre xlabv(9) R 1.2 1.2 1.45 1.2 1.4 1.5 1.2 1.7 2.0 
+  v/cre xvalv(9) R 0.2 0.2 0.6 0.6 0.2 0.6 0.2 0.2 0.6 
+  v/cre ylabv(9) R 0.8 0.8 0.9 0.8 0.8 0.7 0.8 1.0 0.7 
+  v/cre yvalv(9) R 0.2 0.2 0.2 0.2 0.2 0.1 0.2 0.2 0.1 
+
+  *-- the following depend on the size of plot that we have chosen
+  set csiz $sigma(csizv([size]))
+  set tsiz $sigma(tsizv([size])) 
+  set vsiz $sigma(vsizv([size])) 
+  set asiz $sigma(asizv([size])) 
+
+  set xmgl $sigma(xmglv([size]))
+  set xmgr $sigma(xmgrv([size]))
+  set ymgl $sigma(ymglv([size]))
+  set ymgu $sigma(ymguv([size]))
+
+  set chhe $sigma(chhev([size]))
+
+  set yhti $sigma(yhtiv([size]))
+  set gsiz $sigma(gsizv([size]))
+  set ygti $sigma(ygtiv([size]))
+  set yval $sigma(yvalv([size]))
+  set xtic $sigma(xticv([size]))
+  set ytic $sigma(yticv([size]))
+		      
+  set xwin $sigma(xwinv([size]))
+  set ywin $sigma(ywinv([size]))
+  set xwid $sigma(xwidv([size]))
+  set ywid $sigma(ywidv([size]))
+  set bwid $sigma(bwidv([size]))
+  set fwid $sigma(fwidv([size]))
+  set errx $sigma(errxv([size]))
+
+  set xsiz $sigma(xsizv([size]))
+  set ysiz $sigma(ysizv([size]))
+
+  set xlab $sigma(xlabv([size]))
+  set ylab $sigma(ylabv([size]))
+  set xval $sigma(xvalv([size]))
+  set yval $sigma(yvalv([size]))
+
+return
+
+
+ 
+ Macro xx col=0
+   exe journal 
+   fo/file 66 signc_qdep.eps
+   meta 66 -113
+   set ndvy 505
+   tit ' ' -u
+   set ysiz 10
+   set ylab 1.3
+   zone 2 1
+   exe xexample3 col=[col]
+   atit ' ' '[s]?red!'
+   exe xexample col=[col]
+   close 66
+ Return
+ 
+ Macro xexample col=1
+   igset pmci 1
+   set hcol 1
+   set csiz 0.45
+   set ksiz 0.3
+   opt logx
+* tit 'x=0.25' -u
+   tit ' ' -u
+   null 100. 10000. 0.05 0.3
+   opt linx
+   null 2. 5. 0.05 0.3 sab
+* atit 'Q^2! GeV^2!/c^2'
+   atit 'Q^2!, GeV^2!'
+   
+   if ([col]>0) then
+     igset pmci 2
+     set hcol 2
+   endif
+   exe xsq min=0.05 max=0.3 forcex=0.25 nul=-1 file=h1 mtyp=24 xoff=0.03
+   if ([col]>0) then
+     igset pmci 3
+     set hcol 3
+   endif
+   exe xsq min=0.05 max=0.3 forcex=0.25 nul=-1 file=zeus mtyp=25 xoff=-0.03
+   igset pmci 1
+   set hcol 1
+   exe xsq min=0.05 max=0.3 forcex=0.25 nul=-1 msiz=0.25
+   null 0 1 0 1 sab
+   if ([col]>0) then
+     igset pmci 2
+   endif
+   key 0.1 0.4 24 H1
+   if ([col]>0) then
+     igset pmci 3
+   endif
+   key 0.1 0.3 25 Zeus   
+   igset pmci 1
+   key 0.1 0.2 20 Hera
+   itx 0.95 0.95 'x=0.25'  
+ Return
+ 
+ 
+ Macro wzextr
+   fo/file 66 wzextr.eps
+   meta 66 -113
+   set ysiz 13
+   set xsiz 17
+   opt logx
+   null 1. 10000. 0.2 1.7
+   dline $sigma(80.4**2) $sigma(80.4**2) 0.2 1.7
+   dline $sigma(91.2**2) $sigma(91.2**2) 0.2 1.7
+   opt linx
+   null 0 $sigma(log10(10000.)) 0.2 1.7 sab
+   atit 'Q^2! GeV^2!/c^2' 'NC [s]?red!'
+   igset pmci 2
+   set hcol 2
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 file=h1 mtyp=24 xoff=0.03
+   igset pmci 3
+   set hcol 3
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 file=zeus mtyp=25 xoff=-0.03
+   igset pmci 1
+   set hcol 1
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 msiz=0.3   
+   v/crea p(2) r 
+   sigma qql = log10(qq)
+   
+   sigma qqo = order(qql,qql)
+   sigma qxo = order(qx,qql)
+   sigma qxe = order(qe,qql)
+   
+   v/fit qqo(184:198) qxo(184:198) qxe(184:198) p1 q0 2 p
+   dline 0.  $sigma(log10(10000.)) _
+     $sigma(p(1)) $sigma(p(1)+p(2)*log10(10000.))
+   
+   null 0 1 0 1 sab
+   igset pmci 2
+   key 0.7 0.4 24 H1
+   igset pmci 3
+   key 0.7 0.3 25 Zeus   
+   igset pmci 1
+   key 0.7 0.2 20 Hera
+   itx 0.3 0.8 'X=0.005'  
+   close 66
+ Return
+ 
+ Macro xexample2
+   set csiz 0.45
+   set ksiz 0.3
+   opt logx
+   null 1. 500. 0.3 1.3
+   opt linx
+   null 0 $sigma(log10(500.)) 0.3 1.3 sab
+   atit 'Q^2! GeV^2!/c^2'
+   igset pmci 2
+   set hcol 2
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 file=h1 mtyp=24 xoff=0.03
+   igset pmci 3
+   set hcol 3
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 file=zeus mtyp=25 xoff=-0.03
+   igset pmci 1
+   set hcol 1
+   exe xsq min=0.05 max=0.3 forcex=0.005 nul=-1 msiz=0.3
+   null 0 1 0 1 sab
+   igset pmci 2
+   key 0.6 0.4 24 H1
+   igset pmci 3
+   key 0.6 0.3 25 Zeus   
+   igset pmci 1
+   key 0.6 0.2 20 Hera
+ Return
+ 
+ Macro xexample3 col=1
+   set csiz 0.45
+   set ksiz 0.3
+   opt logx
+* tit 'x=0.002' -u
+   tit ' ' -u
+   null 1. 200. 0.4 1.4
+   opt linx
+   null 0 $sigma(log10(200.)) 0.4 1.4 sab
+* atit 'Q^2! GeV^2!/c^2'
+   atit 'Q^2!, GeV^2!'
+   if ([col]>0) then
+     igset pmci 2
+     set hcol 2
+   endif
+   exe xsq min=0.05 max=0.3 forcex=0.002 nul=-1 file=h1 mtyp=24 xoff=0.03
+   if ([col]>0) then
+     igset pmci 3   
+     set hcol 3
+   endif
+   exe xsq min=0.05 max=0.3 forcex=0.002 nul=-1 file=zeus mtyp=25 xoff=-0.03
+   igset pmci 1
+   set hcol 1
+   exe xsq min=0.05 max=0.3 forcex=0.002 nul=-1 msiz=0.25
+   tit ' ' -u
+   null 0 1 0 1 sab
+   if ([col]>0) then
+     igset pmci 2
+   endif
+   key 0.6 0.4 24 H1
+   if ([col]>0) then
+     igset pmci 3
+   endif
+   key 0.6 0.3 25 Zeus   
+   igset pmci 1
+   key 0.6 0.2 20 Hera
+   itx 0.5 0.95 'x=0.002'  
+ Return
+
+ MAcro xsq min=0. max=1.5 forcex=0 file=hera nul=1 mtyp=20 xoff=0 msiz=0.2
+   v/del *
+   n1 = 331
+   v/crea x([n1])
+   v/crea q([n1])
+   v/crea xs([n1])
+   v/crea xe([n1])
+   v/crea ss([n1])
+   v/read q,x,xs,xe,ss output/[file]_xspp.out
+   opt logy
+   if ([nul]=0) then
+     null 0 5. 0.01 5000.
+   endif
+   v/crea scal(22) r _
+     2500. 1800. 1200. 800. 550. 380. 250. 180. 120. 80. _
+     46. 35. 25. 18. 12. 8. 5.5 3.8 2.5 1.8 1.3 1.
+   opt liny
+   set dmod 1
+   exe drawq  sc=scal fun=0.96*signc2 nul=[nul] min=[min] max=[max] forcex=[forcex] mtyp=[mtyp] xoff=[xoff] msiz=[msiz]
+ Return
+ 
+ Macro drawQ x=x q=q xs=xs xe=xe ss=ss sc=0 mtyp=20 fun=0 sig=1. nul=0 _
+     min=0. max=2. forcex=0 xoff=0 msiz=0.2 tit=0
+* Draw Q2 dependence:
+   sigma et = sqrt(ss**2+xe**2)
+* Find all X
+   n = $vdim([x])
+   v/crea qqe([n]) r [n]*0.01
+   xo = 0.
+   v/crea xlist(200) r
+   nx = 0
+   do i=1,[n]
+     xx = [x]([i])
+     do j=1,[nx]
+       x2 = xlist([j])
+       if ([xx].eq.[x2]) then
+	 goto next
+       endif
+     enddo
+     nx = [nx] + 1
+     v/input xlist([nx]) [xx]
+     next:
+   enddo
+   
+   mess list of x [nx]
+   v/copy xlist(1:[nx]) xli
+   v/del xlist
+   sigma xlist = order(xli,xli)
+      
+   
+* Loop over X, plot vs Q2:
+   v/crea qq(200) r
+   v/crea qx(200) r
+   v/crea qe(200) r
+   v/crea qt(200) r
+   v/crea ql(200) r
+   k = 0
+   do i=1,[nx]
+     xx = xlist([i])
+     if ([forcex]<>0) then
+       if ([xx]<>[forcex]) then
+	 goto nextx
+       endif
+     endif
+     nq = 0
+     
+     do j=1,[n]
+       xt =  [x]([j])
+       if ([xt]=[xx]) then
+	 nq = [nq]+1
+	 v/input qq([nq]) [q]([j])
+	 v/input qx([nq]) [xs]([j])
+	 v/input qe([nq]) [xe]([j])
+	 v/input qt([nq]) et([j])
+       endif
+     enddo
+     sigma ql=log10(qq)
+     if ([nul]=0) then
+       if ([nq]>3) then
+	 k = [k]+1
+	 if ([sc]<>0) then
+* scale ...
+	   scale = [sc]([k])
+	   sigma qx=qx*[scale]
+	   sigma qt=qt*[scale]
+	   sigma qe=qe*[scale]
+	 else
+	   scale = 1.
+	 endif
+	 mess [xx] [nq]
+	 hplot/err ql qx qqe qt [nq] [mtyp]
+	 hplot/err ql qx qqe qe [nq] [mtyp] ! 1
+	 if ([fun]<>0) then
+	   fun1 1 [scale]*[fun]([xx],10**x,[sig],[s]) 100 0.61 4.5 ' '
+	   hpl 1 s
+	 endif
+       endif
+     else
+       S = $rsigma(4.*27.5*920.)
+       if ([nq]>3) then
+	 v/del qord
+	 v/copy ql(1:[nq]) qord
+	 sigma qord=order(qord,qord)
+	 qmi = qord(1)
+	 qma = qord([nq])
+	 opt utit
+	 if ([tit]=1) then
+	   tit 'x='//[xx] -u
+	 endif
+	 if ([nul]>0) then
+	   null $sigma([qmi]*0.9) $sigma([qma]*1.1) [min] [max]
+	 endif
+	 sigma ql=ql+[xoff]
+	 hplot/err ql qx qqe qt [nq] [mtyp] [msiz]
+	 hplot/err ql qx qqe qe [nq] [mtyp] [msiz] 1
+	 mess [xx] [nq]
+	 fun1 1 [fun]([xx],10**x,[sig],[s]) 100 $sigma(max(0.61,[qmi]*0.9)) $sigma([qma]*1.1) ' '
+	 hpl 1 s
+	 if ([forcex]=0) then
+	   wait
+	 endif
+	 v/del qord
+       endif
+     endif
+   nextx:  
+   enddo
+ Return
+ 
+ Macro drawF2 react=615 nf2=2 nx=1 ny=1 xmin=-5. xmax=0. max=1.5 drawav=1 _
+     min=0. ratio=0 label=0 fun=0 tored=0
+* 
+* Macro to draw  results of the averaging
+* Parameters:
+*    react -- reaction type (615 -- NC e+p)
+*    nf2   -- number of experiments to show
+*    nx,ny -- zone nx ny : number of X,Y sub-windows
+*    xmin  -- min log10(x)
+*    xmax  -- max log10(x)
+*    min   -- min Y-scale
+*    max   -- max Y-scale
+*    drawav = 1/0  -- draw/omit the average
+*    ratio -- draw ratio instead of cross section. If drawav=0 ratio of the
+*             first 2 X-section measurements is shown, otherwise: ratio of
+*             each measurement to the average is shown
+*    label -- write label=H1_ZEUS to get labels for the dots
+* -------------------------------------------------------
+  v/del * 
+  opt nbox
+  npage = [nx]*[ny]
+  zone [nx] [ny]
+  i = 1
+* Read Q2 info:
+  v/read q2x,nx output/[react]q2.dat
+  
+  sigma q2 = order(q2x,q2x)
+  sigma n = order(nx,q2x)
+  
+  
+  nq=$vdim(q2)
+  do j=1,[nq]  
+    qq = q2([j])
+    nn = n([j])
+    
+    frac = $sigma(mod([qq],1))
+        
+    if ([frac]=0 ) then
+      exe drawf2bin [qq].00 [nf2] np=[nn] react=[react] _
+	xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] min=[min] ratio=[ratio] tored=[tored]
+    else
+      if ( [qq]=0.35 .or. [qq]=0.65 .or. [qq]=0.85 .or. [qq]=0.25  _
+           .or. [qq]=0.15 .or. [qq]=0.11 .or. [qq]=0.050 .or. [qq]=0.060 .or. [qq]=0.090 ) then
+	exe drawf2bin [qq] [nf2] np=[nn] react=[react] _
+	  xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] min=[min] ratio=[ratio] tored=[tored]
+      else
+	exe drawf2bin [qq]0 [nf2] np=[nn] react=[react] _
+	  xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] min=[min] ratio=[ratio] tored=[tored]
+      endif  
+    endif
+    
+    if ( [fun] > 0 ) then
+      S = $rsigma(4.*27.5*920.)
+      
+      if ([react]=515) then
+	fun1 7 0.95*signc2(10.**x,$rsigma([qq]),-1.,[s]) 100 [xmin] [xmax] ' '
+	fun1 8 0.95*signc2(10.**(x+0.05),$rsigma([qq]),-1.,[s]) 100 [xmin] [xmax] ' '
+      endif
+      
+      if ([react]=615) then
+	mess hh [qq] [xmin] [xmax]
+	if ([qq]>4) then
+	  fun1 7 0.95*signc2(10.**x,$rsigma([qq]),1.,[s]) 100 [xmin] [xmax] ' '
+	  fun1 8 0.95*signc2(10.**(x+0.05),$rsigma([qq]),1.,[s]) 100 [xmin] [xmax] ' '
+	else
+	  fun1 7 f2fract(10.**x,$rsigma([qq]),1) 100 [xmin] [xmax] ' '
+	  fun1 8 f2fract(10.**(x+0.05),$rsigma([qq]),1) 100 [xmin] [xmax] ' '	
+	endif
+      endif
+      
+      if ([react]=3615) then
+	mess bla
+	fun1 7 0.95*sigcc(10.**x,$rsigma([qq]),1.,[s],[tored]) 100 [xmin] [xmax] ' '
+	fun1 8 0.95*sigcc(10.**(x+0.05),$rsigma([qq]),1.,[s],[tored]) 100 [xmin] [xmax] ' '
+      endif
+      
+      if ([react]=3515) then
+	mess bla
+	fun1 7 0.95*sigcc(10.**x,$rsigma([qq]),-1.,[s],[tored]) 100 [xmin] [xmax] ' '
+	fun1 8 0.95*sigcc(10.**(x+0.05),$rsigma([qq]),-1.,[s],[tored]) 100 [xmin] [xmax] ' '
+      endif
+      
+      set dmod 1
+      set fcol 2
+      hpl 7 s
+      set fcol 3
+      hpl 8 s
+      set fcol
+    endif
+  
+    mess [label]
+    if ([label]<>0) then
+      mess hi
+      exe label [label]
+    endif  
+    if ([i]=[npage]) then
+       wait
+       i = 1
+    else
+       i = [i] + 1
+    endif
+  enddo
+  v/del q2
+  v/del n
+
+ Return
+ 
+ 
+ Macro xsncpp xmin=-5. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 7 label='H1bulk_H1mb_H1high_H12000_ZeusHigh_ZeusLow_Zeus00' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspph1  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 7 label='H1bulk_H1mb_H1high_H12000_Svx95_Bemc_svx00' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspph1bpt  xmin=-6. xmax=0. max=1. drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 8 label='H1bulk_H1mb_H1high_H12000_Svx95_Bemc_svx00_bpt' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+  Macro xspph1zall  xmin=-6. xmax=0. max=1. drawav=1 fun=1 _
+    min=0. ratio=0 
+    exe drawf2 615 11 _
+label='H1bulk_H1mb_H1high_H12000_ZeusHigh_ZeusLow_Zeus00_Svx95_Bemc_svx00_bpt' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+
+ 
+ Macro xspph100  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 5 label='H1bulk_H1mb_H1high_H12000_svx00' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspph1svx  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 2 label='Svx95_svx00' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspp3  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 3 label='A1_A2_A3' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspp4  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 4 label='a1_a2_a3_a4' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspp5  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 5 label='mb97_svx95_mb99_svx00_mb99s9' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+ Macro xspp6  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 6 label='mb97_svx95_mb99_svx00_mb99s9_qedc' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+ 
+  Macro xspp7  xmin=-6. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 615 7 label='mb97_svx95_mb99_svx00_mb99s9_qedc_zbpt' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+
+ 
+ Macro xsncep xmin=-5. xmax=0. max=1.5 drawav=1 fun=1 _
+     min=0. ratio=0 
+   exe drawf2 515 3 label='H1_H1fl_Zeus' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]
+ Return
+
+ 
+ Macro xsccpp xmin=-3. xmax=0. max=0.5 drawav=1 fun=1 _
+     min=0. ratio=0 tored=0
+   exe drawf2 3615 4 label='H1_H12000_Zeus_Zeus2000' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun] tored=[tored]
+ Return
+
+ Macro xsccep xmin=-3. xmax=0. max=0.5 drawav=1 fun=1 _
+   min=0. ratio=0 
+   exe drawf2 3515 2 label='H1_Zeus' _
+     xmin=[xmin] xmax=[xmax] max=[max] drawav=[drawav] _
+     min=[min] ratio=[ratio] fun=[fun]  tored=[tored]
+ Return
+
+ 
+ Macro label str=h1_zeus
+   null 0 1 0 1 sab
+   j = 1
+   y = 0.9
+cont:
+   j = [j] + 1
+       if ([j]<=5) then
+          igset pmci $eval([j])
+          mtyp = 29
+       else
+          igset pmci 1
+          mtyp = $eval([j]+24-6)
+       endif	   
+*   igset pmci [j]
+   set ksiz 0.3
+   ii = $index([str],'_')
+   if ([ii]=0) then
+     te1 = [str]
+   else
+     te1 = $substring([str],1,$eval([ii]-1))
+     str = $substring([str],$eval([ii]+1),100)
+   endif   
+   key 0.7 [y] [mtyp] [te1]
+   mess [ii] [str]
+   if ([ii]>0) then
+     y = [y] - 0.05
+     goto cont
+   endif
+   igset pmci 1
+ Return
+ 
+ Macro drawf2bin iq2=200.00 nf2in=2 np=13 max=1.5 min=0. _
+                  xmin=-3 xmax=0. drawav=1 ratio=0 react=2 tored=0
+   
+   
+   opt utit
+   tit 'Q2bin='//[iq2] -u
+   null [xmin] [xmax] [min] [max]
+   atit log?10!x  
+
+   size = $eval([nf2in]*2+3)
+   x    = 1
+   f2av = [size]-1
+   f2ave= [size]
+
+   v/crea tab([size],[np]) r
+   v/read tab output/[react]_[iq2].dat
+   v/crea etmp([np]) r [np]*0.001
+
+   
+   
+   v/copy tab([x]) x
+   
+   if ([tored]=1) then     
+     if ([react].gt.1000) then
+       v/del bla
+       conv = 0.3893834e+09
+       gmuer=1.16807E-05
+       xmw=80.41       
+       do i=2,[size]
+	 v/pri tab([i])
+	 v/copy tab([i]) bla
+	 sigma bla=(2*3.141592*x)/([conv]*[gmuer]**2)*([XMW]**2+[iq2])**2/([XMW]**4)*bla
+	 do j=1,[np]
+	   bb = bla([j])
+	   v/input tab([i],[j]) [bb]
+	 enddo
+	 v/pri tab([i])
+       enddo
+       mess redred
+     endif
+   endif
+   
+   
+   sigma x = log10(x)
+   
+* Draw the rest:
+   if ([ratio]=0) then
+* Draw average:
+     if ([drawav]>0) then
+       
+* CHANGE FOR MANDY
+       oave = -0.05
+       sigma xav = x + [oave]
+       hplot/err xav tab([f2av]) etmp tab([f2ave]) [np] 20
+* END CHANGE FOR MANDY
+     endif
+     do i=1,[nf2in]
+       if ([i]<=4) then
+          igset pmci $eval([i]+1)
+          mtyp = 29
+       else
+          igset pmci 1
+          mtyp = $eval([i]+24-5)
+       endif	   
+       f2  = $eval(1+([i]-1)*2+1)
+       f2e = $eval(1+([i]-1)*2+2)
+       hplot/err x tab([f2]) etmp tab([f2e]) [np] [mtyp] ! 
+     enddo
+     
+   else
+     if  ([drawav]>0) then
+* Divide by average ...
+       v/copy tab([f2av]) fa
+       do i=1,[nf2in]
+	 igset pmci $eval([i]+1)
+	 f2  = $eval(1+([i]-1)*2+1)
+	 f2e = $eval(1+([i]-1)*2+2)
+	 v/copy tab([f2]) ff
+	 v/copy tab([f2e]) fe
+	 	 
+	 sigma rat=ff/fa
+	 sigma rate=fe/fa
+	 
+	 v/pri rate
+	 hplot/err x rat etmp rate [np] 24
+       enddo
+       v/del fa
+       v/del ff
+       v/del fe
+       v/del rat
+       v/del rate
+       dline [xmin] [xmax] 1 1  
+     else
+* Divide second by the first ...
+       f21  = $eval(1+(1-1)*2+1)
+       f21e = $eval(1+(1-1)*2+2)
+       f22  = $eval(1+(2-1)*2+1)
+       f22e = $eval(1+(2-1)*2+2)
+       v/copy tab([f21])  f2a
+       v/copy tab([f21e]) f2ae
+       v/copy tab([f22])  f2b
+       v/copy tab([f22e]) f2be
+       sigma rat=f2b/f2a
+       sigma rate=sqrt(f2be**2/f2a**2+f2ae**2*(f2b/f2a**2)**2)
+       
+       hplot/err x rat etmp rate [np] 20
+       dline [xmin] [xmax] 1 1  
+       v/del f2a
+       v/del f2ae
+       v/del f2b
+       v/del f2be
+     endif
+   endif
+   igset pmci 1
+ v/del tab
+ v/del etmp
+ v/del x
+Return

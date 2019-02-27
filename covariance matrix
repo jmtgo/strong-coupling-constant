@@ -1,0 +1,17 @@
+'''This module is designed to evaluate the covariance error matrix for multiple jets, initially for the systematic and lumi errors only'''
+
+import numpy as np
+import pandas as pd
+
+raw_2e = pd.read_csv('HEPData-ins1514251-v2-Table_47.csv')
+
+def Cov_s(e):
+    A = np.zeros(13,13, dtype = np.float64)
+    for i in np.arange(1,14):
+        for j in np.arange(1,14):
+            A[i,j]= e[i]*e[j]
+
+def Cov_syst(e):
+    for i in np.arange(1,len(data)+1):
+        
+

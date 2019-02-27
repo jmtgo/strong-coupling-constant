@@ -1,0 +1,62 @@
+ Macro Help
+   mess chimap#chimap iexp -- dump a chi2 map for a given experiment 
+   mess chimap#chipool [exp1] [exp2] [var] [qmin] [qmax]
+   mess ..................... draw pool distribution for experiments from [exp1] to [exp2]
+   mess ..................... for a variable [var] with limits given by [qmin] to [gmax] 
+   mess ..................... Availiable variables are Q2v and Xv as well as functions of them  
+ Return
+ 
+ 
+ Macro chimap iexp=1
+   h/del 6
+   nt/crea 6 chi2 6 ! ! ex q2v xv chiv f2v f2nv
+   nt/read 6 output/chi2map.dat
+   v/del iexp,q2,x,chi,f2,f2n
+   v/read iexp,q2,x,chi,f2,f2n output/chi2map.dat
+   n = $vdim(iexp)
+   ne = 0
+   c = 0.
+   do i=1,[n]
+     ix = iexp([i]) 
+     if [ix]=[iexp] .or. [iexp]=0 then
+       cl = chi([i])
+       cl = $sigma(abs([cl]))
+ mess [cl]
+       if ([cl].gt.0.001) then
+	 c = $sigma([c]+[cl]**2)
+	 ne = [ne]+1
+       endif
+     endif
+   enddo
+   mess [c]/[ne]
+ Return
+ 
+ Macro chipool i1=1 i2=3 var=log10(q2v) qmin=0. qmax=5.
+   h/del 6
+   nt/crea 6 chi2 6 ! ! ex q2v xv chiv f2v f2nv
+   nt/read 6 output/chi2map.dat
+   nt/cut $1 abs(chiv).gt.0.001
+   null [qmin] [qmax] -3. 3. 
+   igset mtyp 20
+   icol = 1
+   do iexp=[i1], [i2]
+     mess [iexp]
+     igset pmci [icol]
+     icol = 1 + [icol]
+     nt/plot 6.chiv%[var] $1&&ex=[iexp] ! ! ! s
+   enddo
+   atit [var] 'pool'  
+ Return
+ 
+ Macro h1zpool
+   zone 2 1
+   exe chimap#chipool 9 10 ! 0.5 2. 
+   dline 0.5 2. 0. 0.
+   null 0 1 0 1 sab
+   text 0.5 0.9 'H1 bulk + MB' 0.3 !  C
+   exe chimap#chipool 13 14 ! 0.5 2.
+   dline 0.5 2. 0. 0.
+   null 0 1 0 1 sab
+   text 0.5 0.9 'Zeus Lo and Hi' 0.3 !  C
+   pict/print h1zpool.eps
+ Return

@@ -1,0 +1,44 @@
+*
+* Sample steering file for f2ave program 
+*
+&INPUT
+  NSTATADJ = -2
+  LSQRTSTAT = T
+  LAveSameExp = T
+  
+  NF2FILES = 2
+  NEXP     = 2
+  EXPNAME  = 'h1' , 'zeus'
+  F2FILES  = 'test/testf2a.dat', 'test/testf2b.dat'
+  COMEXP   = 101200.
+  Q2XGRID   = 'test/q2x.dat'
+  IOUT = 310
+  NREACT = 1
+  RLIST  = 1
+  YMAXAVE(1) = 0.000025
+  IDEBUG = 0
+  ICHECK = 4
+  NSTATADJ = 0
+  IAVMETH = 1
+  LFLLIMITS = .true.
+  RERROR = -1.5
+&END
+
+&SYST
+  NSYSTOT = 4
+  NSYST    =  3,2
+  SYSNAM  = ' ','a1','a2','b1','b2','com'
+&END
+
+&CHK
+   NCHK = 1
+   XCHK = 0.0013
+   rchk = 615
+   Q2CHK = 35.00
+   F2CHK = 1.3
+   SYSCHK = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 
+&END
