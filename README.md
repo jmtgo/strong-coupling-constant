@@ -3,7 +3,7 @@
 The purpose of this project is to establish a value for the strong coupling constant and the associated error.
 Cross section values are caluculated for different pdf sets from LHAPDF using fastnlo.
 
-To calculate the error we will need to calculate the covariance matrix with Cpdf, Cstat, Ctheory components.
+To calculate the error we will need to calculate the covariance matrix with Cpdf, Cstat, Ctheory and Cnonpert components.
 Cstat is calculated from the errors generated in the HEP data set. 
 
 Cpdf will be calculated using data from pdf sets listed in linux-shelves read me.
@@ -95,6 +95,9 @@ The full size predictions with 2jet, 3jet format were stored in ypred_(a,b) for 
 - [MSTW08cl0i]
 - [MMHT14cl0i]
 - [NNPDF23_0i]
+
+The Cnp matrices were stored in 'NON_PERT_(a,b) for each pdf, and were diag(error(correction)* corrected bin value) with keys as before for each value of a_s. 
+
 
 The full size covariance matrices for 2jet, 3 jet were stored in Cpdf_large(a,b) for scales a,b with keys:
 - [CT10nlo0i]
